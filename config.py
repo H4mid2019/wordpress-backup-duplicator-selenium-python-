@@ -1,3 +1,3 @@
-site_name = "https://rilaviewlodge.com/"
-username = "Hamid"
-password = "Nicola+Hamid7"
+site_name = "http://whatever.com"
+username = "username"
+password = "secretpass"

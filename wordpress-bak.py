@@ -39,11 +39,13 @@ def duplicator():
     pkname = browser.find_element_by_xpath(
         "//input[@name='package-name'][@type='text']")
     pkname.send_keys(timename())
+    browser.execute_script("window.scrollTo(0, 100)")
     pkname.submit()
-    browser.implicitly_wait(4)
+    browser.implicitly_wait(20)
+    browser.execute_script("window.scrollTo(0, 100)")
     browser.find_element_by_id("dup-scan-warning-continue-checkbox").click()
     browser.find_element_by_id("dup-build-button").click()
-    WebDriverWait(browser, 99).until(
+    WebDriverWait(browser, 199).until(
         ec.visibility_of_element_located((By.ID, "dup-btn-installer"))).click()
     browser.implicitly_wait(10)
     browser.find_element_by_id("dup-btn-archive").click()
@@ -52,7 +54,9 @@ def duplicator():
         'input[type="checkbox"]')
     for each_checkbox in checkboxes:
         each_checkbox.click()
-    browser.find_element_by_id("upgrade-plugins-2").click()
+    browser.implicitly_wait(10)
+    browser.find_element_by_xpath('//*[@id="upgrade-plugins-2"]').click()
+    time.sleep(10)
 
 
 try:
